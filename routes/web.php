@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'getHome']);
+use App\Http\Controllers\CategoryController;
 
-Route::get('/category', [App\Http\Controllers\CategoryController::class, 'getIndex']);
+use App\Http\Controllers\HomeController;
 
-Route::get('/category/show/{id}', [App\Http\Controllers\CategoryController::class, 'getShow']);
+Route::get('/', [HomeController::class, 'getHome'])->name('home');
 
-Route::get('/category/create', [App\Http\Controllers\CategoryController::class, 'getCreate']);
-
-Route::get('/category/edit/{id}', [App\Http\Controllers\CategoryController::class, 'getEdit']);
+Route::get('/category', [CategoryController::class, 'getIndex'])->name('category.index');
+Route::get('/category/{id}', [CategoryController::class, 'getShow'])->name('category.show');
+Route::get('/category/{id}/edit', [CategoryController::class, 'getEdit'])->name('category.edit');
+Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
+Route::get('/category/create', [CategoryController::class, 'getCreate'])->name('category.create');

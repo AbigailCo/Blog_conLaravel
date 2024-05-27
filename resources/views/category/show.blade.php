@@ -1,6 +1,7 @@
-
 @extends('layouts.layout')
 
 @section('content')
-    <h1>Vista detalle del post {{ $id }}</h1>
+    <h1>{{ $post->title }}</h1>
+    <p>{{ $post->content }}</p>
+    <p>Posted by {{ $post->poster }}</p>
 @endsection
