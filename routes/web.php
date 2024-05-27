@@ -2,30 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'getHome']);
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+Route::get('/category', [App\Http\Controllers\CategoryController::class, 'getIndex']);
 
-Route::get('/logout', function () {
-    return 'Logout usuario';
-});
+Route::get('/category/show/{id}', [App\Http\Controllers\CategoryController::class, 'getShow']);
 
-Route::get('/category', function () {
-    return view('category.index');
-});
+Route::get('/category/create', [App\Http\Controllers\CategoryController::class, 'getCreate']);
 
-Route::get('/category/show/{id}', function ($id) {
-    return view('category.show', ['id' => $id]);
-});
-
-Route::get('/category/create', function () {
-    return view('category.create');
-});
-
-Route::get('/category/edit/{id}', function ($id) {
-    return view('category.edit', ['id' => $id]);
-});
+Route::get('/category/edit/{id}', [App\Http\Controllers\CategoryController::class, 'getEdit']);
