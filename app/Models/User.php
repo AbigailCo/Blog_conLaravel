@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'full_name',
+        'name',
         'email',
         'password',
     ];
@@ -32,7 +32,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-
     /**
      * Get the attributes that should be cast.
      *
@@ -45,20 +44,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    //crear realacion uno a uno (User-Profile)
-
-    public function profile(){
-        return $this->hasOne(Profile::class);
-    }
-    
-    //crear realacion de uno a muchos (User-Article)
-public function article(){
-    return $this->hasMany(Article::class);
-}
-
-//crear realacion de uno a muchos (User-Comment)
-public function comment(){
-    return $this->hasMany(Comment::class);
-}
 }
