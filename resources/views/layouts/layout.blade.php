@@ -11,7 +11,10 @@
         <ul class="flex space-x-4">
             <li><a href="/" class="hover:underline">Home</a></li>
             <li><a href="/login" class="hover:underline">Login</a></li>
-            <li><a href="/logout" class="hover:underline">Logout</a></li>
+            <li><form method="POST" action="{{ route('logout') }}">
+                 @csrf
+                 <button type="submit" class="hover:underline">Logout</button>
+                </form> <!--sin el metodo POST, el logout da error-->
             <li><a href="/category" class="hover:underline">Categories</a></li>
             <li><a href="/category/create" class="hover:underline">Add Post</a></li>
         </ul>
