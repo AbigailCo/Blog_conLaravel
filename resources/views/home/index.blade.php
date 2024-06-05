@@ -2,5 +2,5 @@
 @extends('layouts.layout')
 
 @section('content')
-    <h1>Pantalla principal</h1>
+    <h1>PANTALLA PRINCIPAL</h1>
 @endsection
