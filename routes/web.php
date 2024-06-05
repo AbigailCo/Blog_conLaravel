@@ -4,12 +4,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+// routes/web.php
+
+
+
+
 
 // Ruta para la página principal
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
 
 // Ruta para el listado de categorías
 Route::get('/post', [PostController::class, 'getIndex'])->name('post.index');
+
+Route::get('/post/search', [PostController::class, 'search'])->name('posts.search');
 
 // Ruta para la vista detalle del post con {id}
 Route::get('/post/show/{id}', [PostController::class, 'getShow'])->name('post.show');

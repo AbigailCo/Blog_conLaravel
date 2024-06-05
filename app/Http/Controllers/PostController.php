@@ -37,5 +37,16 @@ class PostController extends Controller
         return view('post.create');
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $posts = Post::where('title', 'LIKE', "%$query%")
+                    ->orWhere('content', 'LIKE', "%$query%")
+                    ->get();
+
+        return view('post.index', compact('posts'));
+    }
+
 }
 
