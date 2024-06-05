@@ -60,5 +60,29 @@ class PostController extends Controller
         return view('post.index', compact('posts'));
     }
 
+    public function likePost($postId)
+{
+    $post = Post::findOrFail($postId);
+    $post->likes++;
+    $post->save();
+
+    $post->likes()->create([
+        'user_id' => auth()->id(),
+    ]);
+
+    return redirect()->back();
+}
+
+public function unlikePost($postId)
+{
+    $post = Post::findOrFail($postId);
+    $post->likes--;
+    $post->save();
+
+    $post->likes()->where('user_id', auth()->id())->delete();
+
+    return redirect()->back();
+}
+
 }
 

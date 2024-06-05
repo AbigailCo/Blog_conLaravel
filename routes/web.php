@@ -68,3 +68,5 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
     });
 });
+Route::post('/post/{post}/like', [PostController::class, 'likePost'])->name('post.like');
+Route::delete('/post/{post}/unlike', [PostController::class, 'unlikePost'])->name('post.unlike');
