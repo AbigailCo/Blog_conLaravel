@@ -31,12 +31,24 @@ class PostController extends Controller
         $post->update($request->all());
         return redirect()->route('post.show', $id);
     }
-
+    //Metodos Para Create
     public function getCreate()
     {
         return view('post.create');
     }
 
+    public function store(Request $request)
+    {
+        $post = new Post();
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->poster = $request->input('poster');
+        $post->save();
+
+        return redirect()->route('post.index')->with('success', 'Post created successfully');
+    }
+
+    //Metodos para el Buscador
     public function search(Request $request)
     {
         $query = $request->input('query');

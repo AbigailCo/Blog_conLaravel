@@ -23,6 +23,8 @@ Route::get('/post/show/{id}', [PostController::class, 'getShow'])->name('post.sh
 
 // Ruta para añadir un post
 Route::get('/post/create', [PostController::class, 'getCreate'])->name('post.create');
+Route::post('/post', [PostController::class, 'store'])->name('post.store');
+
 
 // Ruta para modificar un post con {id}
 Route::get('/post/edit/{id}', [PostController::class, 'getEdit'])->name('post.edit');
