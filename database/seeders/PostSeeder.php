@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Post;
 
-class PostSeeder extends Seeder
+class PostsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,22 +15,21 @@ class PostSeeder extends Seeder
     public function run()
     {
         Post::create([
-            'title' => 'First Post',
-            'poster' => 'John Doe',
-            'habilited' => false,
-            'content' => 'This is the content of the first post.',
-            'created_at' => now(),
-            'updated_at' => now(),
+            'title' => 'Primer Post',
+            'content' => 'Contenido del primer post',
+            'poster' => 'Autor del post',
         ]);
 
         Post::create([
-            'title' => 'Second Post',
-            'poster' => 'Jane Smith',
-            'habilited' => true,
-            'content' => 'This is the content of the second post.',
-            'created_at' => now(),
-            'updated_at' => now(),
+            'title' => 'Segundo Post',
+            'content' => 'Contenido del segundo post',
+            'poster' => 'Autor del post',
+        ]);
+
+        Post::create([
+            'title' => 'Tercer Post',
+            'content' => 'Contenido del tercer post',
+            'poster' => 'Autor del post',
         ]);
     }
 }
-
