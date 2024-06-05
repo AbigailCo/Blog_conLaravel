@@ -11,10 +11,6 @@
             <input type="text" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" id="title" name="title" value="{{ $post->title }}" required>
         </div>
         <div class="mb-4">
-            <label for="poster" class="block text-gray-700 font-bold mb-2">Poster:</label>
-            <input type="text" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" id="poster" name="poster" value="{{ $post->poster }}" required>
-        </div>
-        <div class="mb-4">
             <label for="content" class="block text-gray-700 font-bold mb-2">Content:</label>
             <textarea class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" id="content" name="content" rows="5" required>{{ $post->content }}</textarea>
         </div>
