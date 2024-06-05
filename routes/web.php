@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 
@@ -9,19 +9,19 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
 
 // Ruta para el listado de categorías
-Route::get('/category', [CategoryController::class, 'getIndex'])->name('category.index');
+Route::get('/post', [PostController::class, 'getIndex'])->name('post.index');
 
 // Ruta para la vista detalle del post con {id}
-Route::get('/category/show/{id}', [CategoryController::class, 'getShow'])->name('category.show');
+Route::get('/post/show/{id}', [PostController::class, 'getShow'])->name('post.show');
 
 // Ruta para añadir un post
-Route::get('/category/create', [CategoryController::class, 'getCreate'])->name('category.create');
+Route::get('/post/create', [PostController::class, 'getCreate'])->name('post.create');
 
 // Ruta para modificar un post con {id}
-Route::get('/category/edit/{id}', [CategoryController::class, 'getEdit'])->name('category.edit');
+Route::get('/post/edit/{id}', [PostController::class, 'getEdit'])->name('post.edit');
 
 // Ruta para actualizar un post con {id}
-Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
+Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update');
 
 // Breeze routes
 Route::get('/dashboard', function () {

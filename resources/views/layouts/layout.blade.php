@@ -15,8 +15,8 @@
                  @csrf
                  <button type="submit" class="hover:underline">Logout</button>
                 </form> <!--sin el metodo POST, el logout da error-->
-            <li><a href="/category" class="hover:underline">Categories</a></li>
-            <li><a href="/category/create" class="hover:underline">Add Post</a></li>
+            <li><a href="/post" class="hover:underline">Categories</a></li>
+            <li><a href="/post/create" class="hover:underline">Add Post</a></li>
         </ul>
     </nav>
     <div class="container mx-auto p-4">
