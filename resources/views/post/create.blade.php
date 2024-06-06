@@ -7,7 +7,7 @@
         @csrf
         <div class="mb-4">
             <label for="title" class="block text-gray-700 font-bold mb-2">Title</label>
-            <input type="text" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" id="title" name="title" value="{{ old('title') }}" required>
+            <input type="text" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" id="title" name="title" value="{{ old('title') }}" maxlength="255" required>
             @error('title')
                 <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
             @enderror
@@ -21,7 +21,7 @@
         </div>
         <div class="mb-4">
             <label for="poster" class="block text-gray-700 font-bold mb-2">Author</label>
-<div class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100">
+<div class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 truncate overflow-hidden overflow-ellipsis">
     {{ auth()->user()->username }}
 </div>
 <input type="hidden" id="poster" name="poster" value="{{ auth()->user()->username }}">

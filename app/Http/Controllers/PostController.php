@@ -49,6 +49,11 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            // Valida el maximo del titulo
+            'title' => 'required|string|max:255', 
+            'content' => 'required|string',
+        ]);
         $post = new Post();
         $post->title = $request->input('title');
         $post->content = $request->input('content');
@@ -70,6 +75,7 @@ class PostController extends Controller
         return view('post.index', compact('posts'));
     }
 
+    //Metodos Like
     public function likePost($postId)
 {
     $post = Post::findOrFail($postId);
@@ -94,5 +100,49 @@ public function unlikePost($postId)
     return redirect()->back();
 }
 
+// Eliminar post
+public function destroy(Post $post)
+{
+    // Verifica si el usuario autenticado tiene permiso para eliminar el post
+    if (auth()->user()->username == $post->poster) {
+        // Eliminar el post
+        $post->delete();
+        // Redirecciona a una página de confirmación o a donde desees
+        return redirect()->route('post.index')->with('success', 'Post deleted successfully.');
+    } else {
+        // Si el usuario no tiene permiso para eliminar el post, redirigirlo a una página de error o a donde desees
+        return redirect()->route('post.index')->with('error', 'You do not have permission to delete this post.');
+    }
+}
+//Myposts
+public function showMyPosts()
+{
+    // Obtener el username del usuario autenticado
+    $poster = Auth::user()->username;
+
+    // Obtener los posts del autor
+    $posts = Post::where('poster', $poster)->get();
+
+    return view('post.mypost', compact('posts'));
+}
+
+public function searchMyPosts(Request $request)
+{
+    // Obtener el username del usuario autenticado
+    $poster = Auth::user()->username;
+
+    // Obtener el término de búsqueda del formulario
+    $query = $request->input('query');
+
+    // Filtrar los posts del autor y realizar la búsqueda
+    $posts = Post::where('poster', $poster)
+                 ->where(function($queryBuilder) use ($query) {
+                     $queryBuilder->where('title', 'LIKE', "%$query%")
+                                  ->orWhere('content', 'LIKE', "%$query%");
+                 })
+                 ->get();
+
+    return view('post.mypost', compact('posts'));
+}
 }
 

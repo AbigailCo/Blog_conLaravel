@@ -1,0 +1,70 @@
+/* Estilos para las cards */
+/* Estilo de la tarjeta */
+.card {
+    max-width: 24rem; /* Ancho máximo de la card */
+    background-color: #f8f3f3; /* Fondo blanco */
+    border: 1px solid #e5e7eb; /* Borde gris */
+    border-radius: 0.5rem; /* Bordes redondeados */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06); /* Sombra */
+    margin: 1rem; /* Añadir margen entre las tarjetas */
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out; /* Transición para sombra y transformación */
+}
+
+/* Imagen de la tarjeta */
+.card-image {
+    width: 100%; /* Ancho del 100% para llenar el contenedor */
+    height: auto; /* Altura automática para mantener la proporción */
+    display: block; /* Mostrar como bloque para centrar */
+    border-top-left-radius: 0.5rem; /* Bordes redondeados solo arriba a la izquierda */
+    border-top-right-radius: 0.5rem; /* Bordes redondeados solo arriba a la derecha */
+    margin-bottom: 0.75rem; /* Margen inferior */
+}
+
+/* Contenido de la tarjeta */
+.card-content {
+    padding: 1.25rem; /* Espaciado interno */
+}
+
+/* Título de la tarjeta */
+.card-title {
+    margin-bottom: 0.5rem; /* Margen inferior */
+    font-size: 1.25rem; /* Tamaño de fuente */
+    font-weight: 700; /* Peso de fuente */
+    line-height: 1.5; /* Altura de línea */
+    color: #1a202c; /* Color de texto */
+}
+
+/* Texto de la tarjeta */
+.card-text {
+    margin-bottom: 1rem; /* Margen inferior */
+    font-size: 1rem; /* Tamaño de fuente */
+    line-height: 1.5; /* Altura de línea */
+    color: #4a5568; /* Color de texto */
+}
+
+/* Efecto hover en la tarjeta */
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* Sombra más pronunciada en hover */
+    transform: translateY(-5px); /* Levanta la tarjeta ligeramente */
+}
+
+/* Enlace dentro de la tarjeta */
+.card-link {
+    display: inline-flex; /* Mostrar como flexbox */
+    align-items: center; /* Alinear elementos al centro verticalmente */
+    padding: 0.75rem 1.25rem; /* Relleno */
+    font-size: 0.875rem; /* Tamaño de fuente */
+    font-weight: 500; /* Peso de fuente */
+    text-align: center; /* Alinear texto al centro */
+    text-decoration: none; /* Sin subrayado */
+    color: #fff; /* Color de texto */
+    background-color: #4c51bf; /* Fondo azul */
+    border-radius: 0.375rem; /* Bordes redondeados */
+    transition: background-color 0.2s ease-in-out; /* Transición suave */
+}
+
+/* Efecto hover en el enlace de la tarjeta */
+.card-link:hover,
+.card-link:focus {
+    background-color: #434190; /* Fondo azul más oscuro al hacer hover o focus */
+}

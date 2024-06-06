@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
 
+// Post
 Route::get('/post', [PostController::class, 'getIndex'])->name('post.index');
 
 Route::get('/post/search', [PostController::class, 'search'])->name('posts.search');
@@ -23,6 +24,13 @@ Route::post('/post', [PostController::class, 'store'])->name('post.store');
 Route::get('/post/edit/{id}', [PostController::class, 'getEdit'])->name('post.edit');
 
 Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update');
+
+Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+
+//Myposts
+Route::get('/myposts', [PostController::class, 'showMyPosts'])->name('post.myposts');
+
+Route::get('/myposts/search', [PostController::class, 'searchMyPosts'])->name('myposts.search');
 
 // Breeze routes
 Route::get('/dashboard', function () {
@@ -44,7 +52,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     /**
      * Home Routes
      */
-    Route::get('/home', 'HomeController@index')->name('home.index');
+    Route::get('/home', 'HomeController@getHome')->name('home.index');
 
     Route::group(['middleware' => ['guest']], function() {
         /**
