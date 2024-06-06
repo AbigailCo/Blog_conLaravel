@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use Database\Seeders\PostsTableSeeder;
+use Database\Seeders\UsersTableSeeder;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,8 +17,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(PostsTableSeeder::class,
-        UsersTableSeeder::class
-    );
+
+        Storage::deleteDirectory('user');
+    Storage::makeDirectory('user');
+
+
+
+        //$this->call(PostsTableSeeder::class);
+        $this->call(UsersTableSeeder::class,);
+
+        User::factory(3)->create();
+
     }
 }
