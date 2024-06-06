@@ -20,7 +20,7 @@
                     <li><a href="{{ route('register.show') }}" class="hover:bg-blue-700 py-2 px-4 rounded transition">Register</a></li>
                 @endguest
                 @auth
-                    <li><a href="/post" class="hover:bg-blue-700 py-2 px-4 rounded transition">Posts</a></li>
+                    <li><a href="/myposts" class="hover:bg-blue-700 py-2 px-4 rounded transition">MyPosts</a></li>
                     <li><a href="/post/create" class="hover:bg-blue-700 py-2 px-4 rounded transition">Add Post</a></li>
                     <li>
                         <form method="POST" action="{{ route('logout') }}" class="inline">

@@ -27,6 +27,11 @@ Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update')
 
 Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 
+//Myposts
+Route::get('/myposts', [PostController::class, 'showMyPosts'])->name('post.myposts');
+
+Route::get('/myposts/search', [PostController::class, 'searchMyPosts'])->name('myposts.search');
+
 // Breeze routes
 Route::get('/dashboard', function () {
     return view('dashboard');

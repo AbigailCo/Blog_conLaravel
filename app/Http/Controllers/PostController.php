@@ -75,6 +75,7 @@ class PostController extends Controller
         return view('post.index', compact('posts'));
     }
 
+    //Metodos Like
     public function likePost($postId)
 {
     $post = Post::findOrFail($postId);
@@ -99,7 +100,7 @@ public function unlikePost($postId)
     return redirect()->back();
 }
 
-// eliminar post
+// Eliminar post
 public function destroy(Post $post)
 {
     // Verifica si el usuario autenticado tiene permiso para eliminar el post
@@ -113,6 +114,35 @@ public function destroy(Post $post)
         return redirect()->route('post.index')->with('error', 'You do not have permission to delete this post.');
     }
 }
+//Myposts
+public function showMyPosts()
+{
+    // Obtener el username del usuario autenticado
+    $poster = Auth::user()->username;
 
+    // Obtener los posts del autor
+    $posts = Post::where('poster', $poster)->get();
+
+    return view('post.mypost', compact('posts'));
+}
+
+public function searchMyPosts(Request $request)
+{
+    // Obtener el username del usuario autenticado
+    $poster = Auth::user()->username;
+
+    // Obtener el término de búsqueda del formulario
+    $query = $request->input('query');
+
+    // Filtrar los posts del autor y realizar la búsqueda
+    $posts = Post::where('poster', $poster)
+                 ->where(function($queryBuilder) use ($query) {
+                     $queryBuilder->where('title', 'LIKE', "%$query%")
+                                  ->orWhere('content', 'LIKE', "%$query%");
+                 })
+                 ->get();
+
+    return view('post.mypost', compact('posts'));
+}
 }
 
