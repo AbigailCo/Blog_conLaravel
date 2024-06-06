@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'My Blog')</title>
    
-
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     @yield('head')
@@ -37,5 +36,6 @@
         @yield('content')
     </div>
    
+    @include('layouts.partials.footer')
 </body>
 </html>
