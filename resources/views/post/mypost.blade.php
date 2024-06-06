@@ -3,21 +3,22 @@
 
 @section('content')
 <div class="max-w-2xl mx-auto p-6 bg-white rounded shadow-md">
-    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Posts</h1>
+    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">MyPosts</h1>
 
-    <form action="{{ route('posts.search') }}" method="GET" class="mb-6">
+    <form action="{{ route('myposts.search') }}" method="GET" class="mb-6">
     <div class="flex">
         <input type="text" name="query" class="w-full p-2 border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Buscar posts...">
         <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-r hover:bg-blue-700 transition">Buscar</button>
     </div>
     </form>
+
     <ul>
         @if(isset($posts) && $posts->count())
             @foreach($posts as $post)
                 <li class="mb-4 border-b border-gray-200 py-4">
                     <div class="mb-4">
-                <a href="{{ route('post.show', $post->id) }}"><span class="text-lg font-bold">{{ $post->title }}</span></a>
-                    <span class="text-gray-600">by {{ $post->poster }}</span>
+                <a href="{{ route('post.show', $post->id) }}"><p class="text-lg font-bold truncate overflow-hidden overflow-ellipsis">{{ Str::limit($post->title, 50) }}</p></a>
+                    <p class="text-gray-600 truncate overflow-hidden overflow-ellipsis">by {{ Str::limit($post->poster, 25) }}</p>
                     </div>    
                     <!-- Verificar si el usuario ha dado "me gusta" a este post -->
                     @if(auth()->check() && !auth()->user()->likedPosts->contains($post->id))
@@ -36,7 +37,6 @@
         </button>
     </form>
 @endif
-
                     <!-- Mostrar el número total de "me gusta" -->
                     {{ $post->likes }} Me gusta
                 </li>
