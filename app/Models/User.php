@@ -50,4 +50,8 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($password);
 
     }
+    public function likedPosts()
+{
+    return $this->belongsToMany(Post::class, 'post_likes');
+}
 }

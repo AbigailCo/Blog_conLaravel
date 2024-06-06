@@ -21,10 +21,10 @@
         </div>
         <div class="mb-4">
             <label for="poster" class="block text-gray-700 font-bold mb-2">Author</label>
-            <input type="text" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" id="poster" name="poster" value="{{ old('poster') }}" required>
-            @error('poster')
-                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
-            @enderror
+<div class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100">
+    {{ auth()->user()->username }}
+</div>
+<input type="hidden" id="poster" name="poster" value="{{ auth()->user()->username }}">
         </div>
         <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Create</button>
     </form>
