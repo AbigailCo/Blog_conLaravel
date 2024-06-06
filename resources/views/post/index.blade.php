@@ -16,15 +16,14 @@
         @if(isset($posts) && $posts->count())
             @foreach($posts as $post)
                 <li class="mb-4 border-b border-gray-200 py-4">
-                    <span class="text-lg font-bold">{{ $post->title }}</span> <span class="text-gray-600">by {{ $post->poster }}</span>
-                    <div class="mt-2">
-                        <a href="{{ route('post.edit', $post->id) }}" class="text-blue-600 hover:underline">Edit</a>
-                        <a href="{{ route('post.show', $post->id) }}" class="text-blue-600 hover:underline ml-2">Show</a>
+                    <div class="mb-4">
+                <a href="{{ route('post.show', $post->id) }}"><span class="text-lg font-bold">{{ $post->title }}</span></a>
+                    <span class="text-gray-600">by {{ $post->poster }}</span>
                     </div>
                     
                     <!-- Verificar si el usuario ha dado "me gusta" a este post -->
                     @if(auth()->check() && !auth()->user()->likedPosts->contains($post->id))
-    <form action="{{ route('post.like', $post->id) }}" method="post">
+    <form action="{{ route('post.like', $post->id) }}" method="post" >
         @csrf
         <button type="submit">
             <i class="far fa-heart"></i> Me gusta

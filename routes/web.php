@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
 
+// Post
 Route::get('/post', [PostController::class, 'getIndex'])->name('post.index');
 
 Route::get('/post/search', [PostController::class, 'search'])->name('posts.search');
@@ -23,6 +24,8 @@ Route::post('/post', [PostController::class, 'store'])->name('post.store');
 Route::get('/post/edit/{id}', [PostController::class, 'getEdit'])->name('post.edit');
 
 Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update');
+
+Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 
 // Breeze routes
 Route::get('/dashboard', function () {

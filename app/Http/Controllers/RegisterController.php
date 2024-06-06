@@ -19,7 +19,13 @@ class RegisterController extends Controller
     }
 
     public function register(RegisterRequest $request){
-        
+        $request->validate([
+            // Valida el maximo de los inputs text
+            'name' => 'required|string|max:255', 
+            'username' => 'required|string|max:255', 
+            'email' => 'required|string|max:255', 
+            'password' => 'required|string|max:255', 
+        ]);
         $user = User::create($request->validated());
         auth()->login($user);
         return redirect('/home')->with('success', "Account successfully registered.");

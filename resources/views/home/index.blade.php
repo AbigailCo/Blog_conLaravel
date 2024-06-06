@@ -8,11 +8,11 @@
     <h1>Home</h1>
     <div class="flex flex-wrap -m-4">
         @foreach ($posts as $post)
-            <a href="#" class="card">
+            <a href="{{ route('post.show', $post->id) }}" class="card">
                 <img class="card-image" src="/images/crepe.jpg" alt="">
                 <div class="card-content">
-                    <h5 class="card-title">{{ $post->title }}</h5>
-                    <p class="card-text">{{ Str::limit($post->content, 100) }}</p>
+                    <h5 class="card-title truncate overflow-hidden overflow-ellipsis">{{ $post->title }}</h5>
+                    <p class="card-text truncate overflow-hidden overflow-ellipsis">{{ Str::limit($post->content, 100) }}</p>
                 </div>
             </a>
         @endforeach

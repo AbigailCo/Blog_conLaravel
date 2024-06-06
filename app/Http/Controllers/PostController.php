@@ -49,6 +49,11 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            // Valida el maximo del titulo
+            'title' => 'required|string|max:255', 
+            'content' => 'required|string',
+        ]);
         $post = new Post();
         $post->title = $request->input('title');
         $post->content = $request->input('content');
@@ -92,6 +97,21 @@ public function unlikePost($postId)
     $post->likes()->where('user_id', auth()->id())->delete();
 
     return redirect()->back();
+}
+
+// eliminar post
+public function destroy(Post $post)
+{
+    // Verifica si el usuario autenticado tiene permiso para eliminar el post
+    if (auth()->user()->username == $post->poster) {
+        // Eliminar el post
+        $post->delete();
+        // Redirecciona a una página de confirmación o a donde desees
+        return redirect()->route('post.index')->with('success', 'Post deleted successfully.');
+    } else {
+        // Si el usuario no tiene permiso para eliminar el post, redirigirlo a una página de error o a donde desees
+        return redirect()->route('post.index')->with('error', 'You do not have permission to delete this post.');
+    }
 }
 
 }
