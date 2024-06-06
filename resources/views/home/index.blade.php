@@ -1,9 +1,8 @@
 @extends('layouts.layout')
+
 @section('head')
 <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
-
 @endsection
-
 
 @section('content')
     <h1>Home</h1>
@@ -19,8 +18,3 @@
         @endforeach
     </div>
 @endsection
-
-
-
-
-
