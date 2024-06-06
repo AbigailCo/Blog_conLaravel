@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -18,16 +19,25 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         return view('post.show', compact('post'));
     }
-
+    //Metodos para Edit
     public function getEdit($id)
     {
         $post = Post::findOrFail($id);
+        // Verificar si el usuario autenticado es el autor del post
+        if ($post->poster !== Auth::user()->username) {
+            return redirect('/')->with('error', 'You are not authorized to edit this post.');
+        }
         return view('post.edit', compact('post'));
     }
 
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
+        
+        if ($post->poster !== Auth::user()->username) {
+            return redirect('/')->with('error', 'You are not authorized to edit this post.');
+        }
+
         $post->update($request->all());
         return redirect()->route('post.show', $id);
     }
