@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'My Blog')</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    @yield('head')
 </head>
+
 <body class="bg-gray-100">
     <nav class="bg-blue-600 p-4 text-white shadow-md">
         <div class="container mx-auto flex justify-between items-center">
@@ -31,5 +34,6 @@
     <div class="container mx-auto p-4 mt-4 bg-white rounded shadow-lg">
         @yield('content')
     </div>
+   
 </body>
 </html>
