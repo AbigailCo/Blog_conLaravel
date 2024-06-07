@@ -30,8 +30,15 @@ Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('post.de
 //Myposts
 Route::get('/myposts', [PostController::class, 'showMyPosts'])->name('post.myposts');
 
+
 Route::get('/myposts/search', [PostController::class, 'searchMyPosts'])->name('myposts.search');
 
+
+//Profile 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
 // Breeze routes
 Route::get('/dashboard', function () {
     return view('dashboard');

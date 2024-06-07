@@ -23,12 +23,15 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $username = $this->faker->unique()->word(10);
         return [
             'name' => fake()->name(),
+            'username' => $username,
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'profile_photo'=>'user/'. $this->faker->image('public/storage/user', 640,480,false),
         ];
     }
 

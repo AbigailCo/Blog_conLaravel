@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'My Blog')</title>
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-MBMWB3OJ2ZudQZv++bB6O0zGQTf/cCZT61W4NivZMYS4DInFNS2O6yEmJe5tK0b/" crossorigin="anonymous">
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     @yield('head')
@@ -16,18 +17,10 @@
             <ul class="flex space-x-4">
                 <li><a href="/" class="hover:bg-blue-700 py-2 px-4 rounded transition">Home</a></li>
                 @guest
-                    <li><a href="{{ route('login.show') }}" class="hover:bg-blue-700 py-2 px-4 rounded transition">Login</a></li>
-                    <li><a href="{{ route('register.show') }}" class="hover:bg-blue-700 py-2 px-4 rounded transition">Register</a></li>
+                @include('layouts.partials.navbarInseguro')
                 @endguest
                 @auth
-                    <li><a href="/myposts" class="hover:bg-blue-700 py-2 px-4 rounded transition">MyPosts</a></li>
-                    <li><a href="/post/create" class="hover:bg-blue-700 py-2 px-4 rounded transition">Add Post</a></li>
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}" class="inline">
-                            @csrf
-                            <button type="submit" class="hover:bg-blue-700 py-2 px-4 rounded transition">Logout</button>
-                        </form>
-                    </li>
+                @include('layouts.partials.navbarSeguro')
                 @endauth
             </ul>
         </div>
