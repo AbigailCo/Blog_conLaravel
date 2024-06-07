@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class UsersTableSeeder extends Seeder
 {
@@ -15,6 +16,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        Storage::makeDirectory('public/storage/user');
         User::create([
             'name' => 'John Doe',
             'username'=> 'JohnDoe123',

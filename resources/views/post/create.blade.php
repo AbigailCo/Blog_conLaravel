@@ -47,3 +47,4 @@
         Volver
     </a>
 </div
+@endsection

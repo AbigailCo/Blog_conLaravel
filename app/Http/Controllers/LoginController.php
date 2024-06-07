@@ -22,7 +22,15 @@ class LoginController extends Controller
         $credentials = $request->getCredentials();
     
         if (!Auth::validate($credentials)) {
-            $user = \App\Models\User::where('username', $credentials['username'])->first();
+            if(empty($credentials['username'])){
+                if(empty($credentials['email'])){
+                    return redirect()->back()->withErrors(['username' => 'Debe ingresar un username o email']);
+                }else{
+                    $user = \App\Models\User::where('email', $credentials['email'])->first();
+                }
+            }else{
+                $user = \App\Models\User::where('username', $credentials['username'])->first();
+            }
             if (!$user) {
                 return redirect()->back()->withErrors(['username' => 'El nombre de usuario no existe.']);
             }
