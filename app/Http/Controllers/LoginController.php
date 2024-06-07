@@ -20,19 +20,22 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         $credentials = $request->getCredentials();
-        
-        if(!Auth::validate($credentials)):
-            dd('error');
-           return redirect()->to('login')
-                ->withErrors(trans('auth.failed'));
-        endif;
+    
+        if (!Auth::validate($credentials)) {
+            $user = \App\Models\User::where('username', $credentials['username'])->first();
+            if (!$user) {
+                return redirect()->back()->withErrors(['username' => 'El nombre de usuario no existe.']);
+            }
+            
+            return redirect()->back()->withErrors(['password' => 'La contraseña es incorrecta.']);
+        }
+    
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
-        
-
         Auth::login($user);
-
+    
         return $this->authenticated($request, $user);
     }
+    
 
     protected function authenticated(Request $request, $user) 
     {

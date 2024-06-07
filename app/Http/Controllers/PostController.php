@@ -53,11 +53,13 @@ class PostController extends Controller
             // Valida el maximo del titulo
             'title' => 'required|string|max:255', 
             'content' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
         ]);
         $post = new Post();
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->poster = $request->input('poster');
+        $post->category_id = $request->input('category_id');
         $post->save();
 
         return redirect()->route('post.index')->with('success', 'Post created successfully');
@@ -124,6 +126,7 @@ public function showMyPosts()
     $posts = Post::where('poster', $poster)->get();
 
     return view('post.mypost', compact('posts'));
+    
 }
 
 public function searchMyPosts(Request $request)
@@ -144,5 +147,15 @@ public function searchMyPosts(Request $request)
 
     return view('post.mypost', compact('posts'));
 }
+////////////////////////////////////////////////////
+public function show($id, Request $request)
+{
+    $post = Post::findOrFail($id);
+    $from = $request->query('from');
+    return view('post.show', compact('post', 'from'));
+}
+
+
+
 }
 

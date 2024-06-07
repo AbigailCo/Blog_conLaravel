@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
     Storage::makeDirectory('user');
 
 
-
+        $this->call(CategoriesTableSeeder::class); //categories va primero si o si
         $this->call(PostsTableSeeder::class);
         $this->call(UsersTableSeeder::class,);
 

@@ -15,6 +15,15 @@
     <h1 class="text-3xl font-bold text-gray-800 mb-4 break-words">{{ $post->title }}</h1>
     <p class="text-gray-700 mb-4 break-words">{{ $post->content }}</p>
     <p class="text-gray-600 break-words">Posted by <span class="font-bold">{{ $post->poster }}</span></p>
+    <p class="text-right">
+    <div class="flex justify-end mt-4">
+    @if(isset($from) && $from == 'home')
+    <a href="{{ route('home.index') }}" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+        Volver
+    </a>
+@endif
+    </div>
+ 
     @auth
             @if (auth()->user()->username == $post->poster)
                 <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary">Edit Post</a>

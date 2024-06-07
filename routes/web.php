@@ -16,7 +16,7 @@ Route::get('/post', [PostController::class, 'getIndex'])->name('post.index');
 Route::get('/post/search', [PostController::class, 'search'])->name('posts.search');
 
 Route::get('/post/show/{id}', [PostController::class, 'getShow'])->name('post.show');
-
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('post.show');
 Route::get('/post/create', [PostController::class, 'getCreate'])->name('post.create');
 Route::post('/post', [PostController::class, 'store'])->name('post.store');
 

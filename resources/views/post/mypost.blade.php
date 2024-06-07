@@ -45,5 +45,10 @@
             <p class="text-gray-600">No se encontraron posts.</p>
         @endif
     </ul>
+    <div class="flex justify-end mt-4">
+        <a href="{{ route('home.index') }}" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+            Volver
+        </a>
+    </div>
 </div>
 @endsection

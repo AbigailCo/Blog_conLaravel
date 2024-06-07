@@ -23,5 +23,9 @@ class Post extends Model
     {
         return $this->hasMany(PostLike::class);
     }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     
 }

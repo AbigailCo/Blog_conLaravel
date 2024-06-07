@@ -7,6 +7,7 @@
 
         <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Login</h1>
 
+
         <div class="mb-4">
             <label for="username" class="block text-gray-700 font-bold mb-2">Email or Username</label>
             <input type="text" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" name="username" value="{{ old('username') }}" placeholder="Username" required autofocus>
@@ -29,3 +30,4 @@
     </form>
 </div>
 @endsection
+
