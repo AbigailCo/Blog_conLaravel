@@ -14,6 +14,7 @@
 <div class="max-w-2xl mx-auto p-6 bg-white rounded shadow-md">
     <h1 class="text-3xl font-bold text-gray-800 mb-4 break-words">{{ $post->title }}</h1>
     <p class="text-gray-700 mb-4 break-words">{{ $post->content }}</p>
+    <p class="text-gray-600 break-words">Category: <span class="font-bold">{{ $post->category->name ?? 'No category' }}</span></p>
     <p class="text-gray-600 break-words">Posted by <span class="font-bold">{{ $post->poster }}</span></p>
     <p class="text-right">
     <div class="flex justify-end mt-4">

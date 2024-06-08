@@ -40,9 +40,16 @@
                 <input type="file" name="profile_photo" id="profile_photo" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
-            <button type="submit" class="w-full  text-black py-2 px-4 rounded-md hover:bg-indigo-600">Actualizar Perfil</button>
-        </form>
-
-       
+            <button type="submit" class="bg w-full  text-black py-2 px-4 rounded-md hover:bg-indigo-600 ">Actualizar Perfil</button>
+        
+  </form>
+  <div class="flex justify-center">
+    <a href="{{ route('home.index') }}" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+        Volver
+    </a>
+</div>
     </div>
+
+        
+        
 @endsection

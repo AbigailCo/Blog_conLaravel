@@ -353,7 +353,7 @@ ol,
 ul,
 menu {
   list-style: none;
-  margin: 0;
+  margin: 15;
   padding: 0;
 }
 
@@ -770,7 +770,7 @@ video {
 }
 
 .justify-between {
-  justify-content: space-between;
+  justify-content: end;
 }
 
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {

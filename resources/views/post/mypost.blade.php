@@ -21,6 +21,7 @@
                     <p class="text-lg font-bold truncate overflow-hidden overflow-ellipsis">{{ Str::limit($post->title, 50) }}</p>
                 </a>
                 <p class="text-gray-600 truncate overflow-hidden overflow-ellipsis">by {{ Str::limit($post->poster, 25) }}</p>
+                <p class="text-gray-600 truncate overflow-hidden overflow-ellipsis"> {{ $post->category->name ?? 'No category' }}</p>
             </div>
             <!-- Verificar si el usuario ha dado "me gusta" a este post -->
             @if(auth()->check() && !auth()->user()->likedPosts->contains($post->id))
