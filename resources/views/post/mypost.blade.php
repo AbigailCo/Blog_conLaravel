@@ -1,5 +1,6 @@
+
+
 @extends('layouts.layout')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+cg0G5GOJVxL9ljsPv5X6Fk5ZO+IvAz/uxy2U+sqUtoa05e" crossorigin="anonymous">
 
 @section('content')
 <div class="max-w-2xl mx-auto p-6 bg-white rounded shadow-md">
@@ -19,8 +20,14 @@
             <div class="mb-4">
                 <a href="{{ route('post.show', $post->id) }}">
                     <p class="text-lg font-bold truncate overflow-hidden overflow-ellipsis">{{ Str::limit($post->title, 50) }}</p>
+                    @if($post->image_path)
+                        <div class="mb-4">
+                        <img src="{{ asset($post->image_path) }}" alt="{{ $post->title }}" class="w-full h-auto rounded">
+                        </div>
+                    @endif
                 </a>
-                <p class="text-gray-600 truncate overflow-hidden overflow-ellipsis">by {{ Str::limit($post->poster, 25) }}</p>
+               
+             
                 <p class="text-gray-600 truncate overflow-hidden overflow-ellipsis"> {{ $post->category->name ?? 'No category' }}</p>
             </div>
             <!-- Verificar si el usuario ha dado "me gusta" a este post -->

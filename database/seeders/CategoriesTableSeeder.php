@@ -14,10 +14,16 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['Uncategorized', 'Technology', 'Health', 'Travel', 'Lifestyle', 'Education'];
+        $categories = [
+            ['name' => 'Uncategorized', 'image_path' => 'images/categories/uncategorized.jpg'],
+            ['name' => 'Technology', 'image_path' => 'images/categories/technology.jpg'],
+            ['name' => 'Travel', 'image_path' => 'images/categories/travel.jpg'],
+            ['name' => 'Lifestyle', 'image_path' => 'images/categories/lifestyle.jpg'],
+            ['name' => 'Education', 'image_path' => 'images/categories/education.jpg'],
+        ];
 
         foreach ($categories as $category) {
-            Category::create(['name' => $category]);
+            Category::create($category);
         }
     }
 }

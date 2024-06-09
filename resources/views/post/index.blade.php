@@ -21,6 +21,12 @@
                 </a>
                 <p class="text-gray-600 truncate overflow-hidden overflow-ellipsis">by {{ Str::limit($post->poster, 25) }}</p>
             </div>
+             <!-- Mostrar la imagen del post -->
+             @if($post->image_path)
+                        <div class="mb-4">
+                        <img src="{{ asset($post->image_path) }}" alt="{{ $post->title }}" class="w-full h-auto rounded">
+                        </div>
+                    @endif
             <!-- Verificar si el usuario ha dado "me gusta" a este post -->
             @if(auth()->check() && !auth()->user()->likedPosts->contains($post->id))
             <form action="{{ route('post.like', $post->id) }}" method="post">

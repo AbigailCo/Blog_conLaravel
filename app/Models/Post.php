@@ -18,6 +18,7 @@ class Post extends Model
         'title',
         'content',
         'poster',
+        'image_path',
     ];
     public function likes()
     {

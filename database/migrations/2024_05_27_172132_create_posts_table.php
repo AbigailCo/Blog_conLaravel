@@ -19,7 +19,10 @@ class CreatePostsTable extends Migration
             $table->string('poster')->nullable(); // poster de tipo String
             $table->boolean('habilited')->default(false); // habilited de tipo boolean, por defecto false
             $table->text('content'); // content de tipo text
+            $table->string('image_path')->nullable(); // Nueva columna para la ruta de la imagen
+            $table->integer('likes')->default(0); // Nueva columna para contar los likes
             $table->timestamps(); // created_at y updated_at de tipo timestamp
+
         });
     }
 

@@ -20,7 +20,11 @@
         @foreach ($posts as $post)
 
         <a href="{{ route('post.show', ['id' => $post->id, 'from' => 'home']) }}" class="card">
-                <img class="card-image" src="/images/crepe.jpg" alt="">
+        @if($post->image_path)
+    <div class="mb-4">
+        <img src="{{ asset($post->image_path) }}" alt="{{ $post->title }}" class="w-64 h-auto rounded">
+    </div>
+@endif
                 <div class="card-content">
                     <h5 class="card-title truncate overflow-hidden overflow-ellipsis">{{ Str::limit($post->title, 25) }}</h5>
                     <p class="card-text truncate overflow-hidden overflow-ellipsis">Autor: {{ Str::limit($post->poster, 100) }}</p>

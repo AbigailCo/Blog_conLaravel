@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,18 +51,27 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            // Valida el maximo del titulo
+            // Valida el máximo del título
             'title' => 'required|string|max:255', 
             'content' => 'required|string',
             'category_id' => 'required|exists:categories,id',
         ]);
+    
+       
+        $category = Category::findOrFail($request->input('category_id'));
+        $categoryImagePath= $category->image_path;
+     
         $post = new Post();
         $post->title = $request->input('title');
         $post->content = $request->input('content');
-        $post->poster = $request->input('poster');
+        $post->poster = $request->input('poster'); //ES EL NOMBRE DEL AUTOR
         $post->category_id = $request->input('category_id');
-        $post->save();
+    
+        $post->image_path = asset($category->image_path);
 
+    
+        $post->save();
+    
         return redirect()->route('post.index')->with('success', 'Post created successfully');
     }
 
