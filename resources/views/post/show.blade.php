@@ -37,13 +37,14 @@
                     <button type="submit" class="inline-block bg-red-500 hover:bg-red-700 text-black font-semibold py-2 px-4 rounded" onclick="return confirm('¿Seguro que quieres eliminar este post?')">Eliminar</button>
                 </form>
             </div>
-        @endif
-
-    @endauth
-    <div class="flex justify-end mt-4">
+            <div class="flex justify-end mt-4">
         <a href="{{ route('post.myposts') }}" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
             Volver
         </a>
     </div>
+        @endif
+
+    @endauth
+  
 </div>
 @endsection
