@@ -2,7 +2,7 @@
     <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
     <div class="w-full">
     <p class="text-lg font-semibold text-left">Nuestro blog con Laravel</p>
-    <li><a href="https://github.com/AbigailCo/myblog"><i class="fab fa-github"></i> Ingresar al repositorio</a></li>
+    <li><a href="https://github.com/AbigailCo/myblog" target="_blank"><i class="fab fa-github"></i> Ingresar al repositorio</a></li>
     </div>
        
         <div>

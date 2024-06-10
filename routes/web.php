@@ -5,7 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CategoryController;
 
 
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
@@ -32,8 +32,9 @@ Route::get('/myposts', [PostController::class, 'showMyPosts'])->name('post.mypos
 
 
 Route::get('/myposts/search', [PostController::class, 'searchMyPosts'])->name('myposts.search');
-
-
+//Category
+Route::resource('categories', CategoryController::class);
+Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 //Profile 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

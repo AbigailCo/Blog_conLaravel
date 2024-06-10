@@ -3,6 +3,7 @@
     <li><a href="{{ route('home.index') }}" class="hover:bg-blue-700 py-2 px-4 rounded transition">Home</a></li>
         <li><a href="{{ route('post.myposts') }}" class="hover:bg-blue-700 py-2 px-4 rounded transition">My Posts</a></li>
         <li><a href="{{ route('post.create') }}" class="hover:bg-blue-700 py-2 px-4 rounded transition">Add Post</a></li>
+        <li><a href="{{ route('categories.index') }}" class="hover:bg-blue-700 py-2 px-4 rounded transition">Categories</a></li>
         <li><a href="{{ route('profile.edit') }}" class="hover:bg-blue-700 py-2 px-4 rounded transition">Edit profile</a></li>
     </ul>
     <div class="flex items-center">
